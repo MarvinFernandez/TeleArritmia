@@ -23,8 +23,8 @@ public class FXMLVistaController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me");
-        label.setText("Hello World!");
+        System.out.println("You clicked me motherfucker");
+        label.setText("Hello Marvin!");
     }
     
     @Override
