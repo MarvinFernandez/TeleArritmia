@@ -25,12 +25,11 @@ public class FXMLVistaController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me motherfucker");
         label.setText("Hello Marvin!");
-        label.setText("MIERDA");
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // AQUI es donde es la primera ejecucion 
     }    
     
 }
