@@ -13,18 +13,18 @@ import java.util.Date;
  */
 public class Patient {
     
-    public enum gender{male,female};
+    public enum GENDER{male,female};
     
     private String name;
     private String surname;
-    private Integer id;
+    private String id;
     private String email;
     private Date dob;
-    private gender sex; 
+    private GENDER sex; 
     private int ECG[][]; 
     private int EDA[][];
 
-    public Patient(String name, String surname, Integer id, String email, Date dob, gender sex, int[][] ECG, int[][] EDA) {
+    public Patient(String name, String surname, String id, String email, Date dob, GENDER sex, int[][] ECG, int[][] EDA) {
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -38,7 +38,7 @@ public class Patient {
     public Patient() {
         this.name = null;
         this.surname = null;
-        this.id = 0;
+        this.id = null;
         this.email = null;
         this.dob = null;
         this.sex = null;
@@ -65,11 +65,11 @@ public class Patient {
         this.surname = surname;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -89,11 +89,11 @@ public class Patient {
         this.dob = dob;
     }
 
-    public gender getSex() {
+    public GENDER getSex() {
         return sex;
     }
 
-    public void setSex(gender sex) {
+    public void setSex(GENDER sex) {
         this.sex = sex;
     }
 
@@ -115,7 +115,9 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{\n" + "name=" + name + "\n surname=" + surname + "\n id=" + id + "\n email=" + email + "\n dob=" + dob + "\n sex=" + sex + "\n}";
+        return "Patient{\n" + "name=" + name + "\n surname=" + surname + 
+                "\n id=" + id + "\n email=" + email + "\n dob=" + dob.getDay()+
+                "/"+dob.getMonth()+"/"+dob.getYear() + "\n sex=" + sex + "\n}";
     }
     
     
