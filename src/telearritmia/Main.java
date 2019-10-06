@@ -5,11 +5,14 @@
  */
 package telearritmia;
 
+import BITalino.BITalino;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import pojo.*;
 
 /**
  *
@@ -17,14 +20,25 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     
+    private Stage primaryStage;
+    public static Patient patient = new Patient();
+    public static BITalino bitalino;
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLVista.fxml"));
+        this.primaryStage = stage;
+        this.primaryStage.initStyle(StageStyle.UTILITY);
+        this.primaryStage.setResizable(false);
+        this.primaryStage.setTitle("TeleArritmia");
+        initProgram();
+    }
+    
+    public void initProgram() throws Exception {
         
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLVistaInit.fxml"));
         Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     /**
