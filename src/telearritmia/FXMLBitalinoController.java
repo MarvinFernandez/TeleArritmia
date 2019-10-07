@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 
 /**
  * FXML Controller class
@@ -22,6 +24,16 @@ public class FXMLBitalinoController implements Initializable {
     
     @FXML
     private Label label;
+    
+    @FXML
+    private Accordion steps;
+    @FXML
+    private TitledPane step1;
+    @FXML
+    private TitledPane step2;
+    @FXML
+    private TitledPane step3;
+    
     
     @FXML
     private void macAdresse(ActionEvent event) {
