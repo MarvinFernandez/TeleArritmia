@@ -71,10 +71,12 @@ public class FXMLBitalinoController implements Initializable {
                 System.out.println("size block: " + frame.length);
 
                 //Print the samples
+                //creamos tres vectores [tiempo, ECG, EDA].
+                
                 for (int i = 0; i < frame.length; i++) {
                     System.out.println((j * block_size + i) + " seq: " + frame[i].seq + " "
                             + frame[i].analog[0] + " "
-                            + frame[i].analog[1] + " "
+                            + frame[i].analog[1] + " "         
                     //  + frame[i].analog[2] + " "
                     //  + frame[i].analog[3] + " "
                     //  + frame[i].analog[4] + " "
