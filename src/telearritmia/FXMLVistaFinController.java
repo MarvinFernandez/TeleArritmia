@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
+ * 
  * @author danielmarchan
  */
 public class FXMLVistaFinController implements Initializable {
