@@ -40,7 +40,7 @@ public class FXMLBitalinoController implements Initializable {
     
     
     @FXML
-    private TextField textMacAdresse;        
+    private TextField textMacAdress;        
     
     @FXML
     private Label errorLable;
@@ -50,15 +50,16 @@ public class FXMLBitalinoController implements Initializable {
 
     
     
-    @FXML
-    private void macAdresse(ActionEvent event) throws BITalinoException{
+    /*@FXML
+    private void macAdress(ActionEvent event) throws BITalinoException{
         //save mac Adresse
-        macAddress=textMacAdresse.getText();
+        macAddress=textMacAdress.getText();
         Main.bitalino.open(macAddress , SamplingRate);
  
-    }
+    }*/
     
     private void record(ActionEvent event) throws BITalinoException{
+        macAddress = macAddress=textMacAdress.getText();
         if (macAddress == null){
         //introduce macAdress Error
              errorLable.setText("Introduce the Mac Adresse of Bitalino");
