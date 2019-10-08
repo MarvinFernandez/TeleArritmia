@@ -50,6 +50,7 @@ public class FXMLBitalinoController implements Initializable {
 
     
     
+    
     /*@FXML
     private void macAdress(ActionEvent event) throws BITalinoException{
         //save mac Adresse
