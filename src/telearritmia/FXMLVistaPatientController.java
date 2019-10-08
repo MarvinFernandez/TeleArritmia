@@ -58,7 +58,6 @@ public class FXMLVistaPatientController implements Initializable {
     @FXML
     private void startBitalinoVista(ActionEvent event){
         try {
-            
             Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaBitalino.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(parent);
@@ -67,7 +66,8 @@ public class FXMLVistaPatientController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(FXMLVistaPatientController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Problems with vistaBitalino");
+            System.out.println("Problems with vista Bitalino");
+            System.out.println(ex);
         }
     }
     
@@ -91,7 +91,7 @@ public class FXMLVistaPatientController implements Initializable {
         gender.getItems().add(GENDER.male);
         gender.getItems().add(GENDER.female);
     }
-    
+    /*veamos si se sube*/
     
     
     @Override
