@@ -97,7 +97,7 @@ public class FXMLBitalinoController implements Initializable {
     }
     
     
-    
+    /*veamos si se sube*/
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
