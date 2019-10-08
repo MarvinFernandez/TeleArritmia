@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import persistence.Persistence;
 import pojo.*;
 
 /**
@@ -25,7 +26,8 @@ public class Main extends Application {
     
     private Stage primaryStage;
     public static Patient patient = new Patient();
-    public static BITalino bitalino;
+    public static BITalino bitalino = new BITalino();
+    public static Persistence persistence = new Persistence();
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -54,5 +56,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
     
 }
