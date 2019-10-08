@@ -10,6 +10,8 @@ import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,13 +56,19 @@ public class FXMLVistaPatientController implements Initializable {
     
   
     @FXML
-    private void startBitalinoVista(ActionEvent event) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaBitalino.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.setTitle("Bitalino");
-        stage.show();
+    private void startBitalinoVista(ActionEvent event){
+        try {
+            
+            Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaBitalino.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.setTitle("Bitalino");
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLVistaPatientController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Problems with vistaBitalino");
+        }
     }
     
     @FXML
@@ -75,7 +83,6 @@ public class FXMLVistaPatientController implements Initializable {
         date.setMonth(dob.getValue().getMonthValue());
         date.setYear(dob.getValue().getYear());
         Main.patient.setDob(date);
-       
         //textInfo.setText(Main.patient.toString());
         System.out.println(Main.patient.toString());
     }

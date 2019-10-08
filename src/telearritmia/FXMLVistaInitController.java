@@ -8,6 +8,8 @@ package telearritmia;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,16 +32,21 @@ public class FXMLVistaInitController implements Initializable {
     
     
     @FXML
-    private void startProgram(ActionEvent event) throws IOException{
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-        Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaPatient.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.setTitle("Patient");
-        //Image ico = new Image("/.png");
-        //stage.getIcons().add(ico);
-        stage.show();
+    private void startProgram(ActionEvent event){
+        try {
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+            Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaPatient.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.setTitle("Patient");
+            //Image ico = new Image("/.png");
+            //stage.getIcons().add(ico);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLVistaInitController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Problems with patient Vista");
+        }
     }
     
     
