@@ -21,56 +21,50 @@ import pojo.Patient;
  */
 public class Persistence {
     
-     /*Un metodo que lee de un archivo objetos de tipo poblacion en binario
-        y me devuelve la poblacion que ha leido*/
-    
-    /*mas de lo mismo le pasa un string que lea el file*/
+     /*Un metodo que lee de un archivo objeto de tipo patient en binario
+        y me devuelve un patient que ha leido*/
     public Patient cargar(File f) throws ClassNotFoundException {
-        FileInputStream pobla = null;     
-        ObjectInputStream poblaratones = null;
-        Patient p1=null;
+        FileInputStream pat = null;     
+        ObjectInputStream pati = null;
+        Patient patient=null;
 
         try{    
-                pobla = new FileInputStream (f);     
-                poblaratones = new ObjectInputStream(pobla);
-                p1=(Patient)poblaratones.readObject();
+                pat = new FileInputStream (f);     
+                pati = new ObjectInputStream(pat);
+                patient=(Patient)pati.readObject();
         }
         catch(IOException ex){
             System.out.println(ex);
         }
         /*Tiene que cerrar el flujo de datos*/
         finally{
-            if(poblaratones!=null){
+            if(pati!=null){
                try{
-               poblaratones.close();
+               pati.close();
                }
                catch(IOException ex){
                System.out.println(ex);          
                 }
-            }
-            
-        if(pobla!=null){
+            }    
+        if(pat!=null){
               try{
-                pobla.close();}
+                pat.close();}
               catch(IOException ex){
                   System.out.println(ex);}}
         }
-        return p1; }
+        return patient; }
 
 
       
     /*Le paso un path y me tiene que guardar esa poblacion ahi*/
-    /*Yo aqui cambiaria y le meteria un String y dentro inicializaria el File*/
-    public void guardar(File f,Patient p1){
-        FileOutputStream pobla = null;     
-        ObjectOutputStream poblaratones = null; 
-        
-        
+    public void guardar(File f,Patient patient){
+        FileOutputStream pat = null;     
+        ObjectOutputStream pati = null;    
       
         try{
-            pobla = new FileOutputStream (f);     
-            poblaratones = new ObjectOutputStream(pobla);
-            poblaratones.writeObject(p1);
+            pat = new FileOutputStream (f);     
+            pati = new ObjectOutputStream(pat);
+            pati.writeObject(patient);
         }
       
         catch(IOException ex){
@@ -78,24 +72,24 @@ public class Persistence {
         }
       
         finally{
-            if(poblaratones!=null){
+            if(pati!=null){
                 try{
-                    poblaratones.close();
+                    pati.close();
                     }
                 catch(IOException ex){
                     System.out.println(ex);;
                 }
              }
-            
-            if(pobla!=null){
+            if(pat!=null){
                 try{
-                    pobla.close();}
+                    pat.close();}
                 catch(IOException ex){
                     System.out.println(ex);
                 }
             }
         }
     }
+    
     
     
     
