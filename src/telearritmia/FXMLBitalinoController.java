@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.bluetooth.RemoteDevice;
@@ -42,7 +43,11 @@ public class FXMLBitalinoController implements Initializable {
     private TextField textMacAdresse;        
     
     @FXML
-    private Label ErrorLable;
+    private Label errorLable;
+    
+    @FXML 
+    private Button recordButton;
+
     
     @FXML
     private void macAdresse(ActionEvent event) throws BITalinoException{
@@ -55,7 +60,7 @@ public class FXMLBitalinoController implements Initializable {
     private void record(ActionEvent event) throws BITalinoException{
         if (macAddress == null){
         //introduce macAdress Error
-             ErrorLable.setText("Introduce the Mac Adresse of Bitalino");
+             errorLable.setText("Introduce the Mac Adresse of Bitalino");
         }
         else{
            // Main.bitalino.open(macAddress, SamplingRate);
