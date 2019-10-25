@@ -5,13 +5,14 @@
  */
 package pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author danielmarchan
  */
-public class Patient {
+public class Patient implements Serializable {
     
     public enum GENDER{male,female};
     
@@ -104,18 +105,33 @@ public class Patient {
     public void setECG(int[][] ECG) {
         this.ECG = ECG;
     }
+    
+    //Yo no se si esto vaya a funcionar
+    public void setECG2(int []ECG,int []time){
+        this.ECG[0] = ECG;
+        this.ECG[1] = time;
+    }
+    
+    //Esto puede que mejor
+    public void setECGonly(int i,int j, int EMG){
+        this.ECG[i][j] = EMG; 
+    }
 
     public int[][] getEDA() {
         return EDA;
     }
+    
 
     public void setEDA(int[][] EDA) {
         this.EDA = EDA;
     }
+    public void setEDA(int i, int j, int EDA){
+        this.ECG[i][j]=EDA;
+    }
 
     @Override
     public String toString() {
-        return "Patient{\n" + "name=" + name + "\n surname=" + surname + 
+        return "Patient{\n" + " name=" + name + "\n surname=" + surname + 
                 "\n id=" + id + "\n email=" + email + "\n dob=" + dob.getDay()+
                 "/"+dob.getMonth()+"/"+dob.getYear() + "\n sex=" + sex + "\n}";
     }
