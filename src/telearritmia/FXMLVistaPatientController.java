@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -56,9 +57,10 @@ public class FXMLVistaPatientController implements Initializable {
     
   
     @FXML
-    private void startBitalinoVista(ActionEvent event){
+    private void startBitalinoVista(ActionEvent event) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaBitalino.fxml"));
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+            Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaBitalino2.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(parent);
             stage.setScene(scene);
@@ -91,7 +93,7 @@ public class FXMLVistaPatientController implements Initializable {
         gender.getItems().add(GENDER.male);
         gender.getItems().add(GENDER.female);
     }
-    /*veamos si se sube*/
+ 
     
     
     @Override
