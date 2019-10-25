@@ -5,6 +5,7 @@
  */
 package telearritmia;
 
+import BITalino.BITalino;
 import BITalino.BITalinoException;
 import BITalino.Frame;
 import java.io.File;
@@ -31,17 +32,21 @@ import pojo.Patient;
 public class FXMLVistaBitalino2Controller implements Initializable {
 
     @FXML
-    Button recordBut;
+    private Button recordBut;
     @FXML
-    Button but_SaveSend;
+    private Button but_SaveSend;
     @FXML 
-    Button but_Upload;
+    private Button but_Upload;
+    //@FXML
+    //private ProgressIndicator indicator;
     @FXML
-    ProgressIndicator indicator;
+    private TextField textMacAddress;
+    
     @FXML
-    TextField textMacAddress;
+    private Accordion steps;
+    
     @FXML
-    Accordion steps;
+    private TextField text;
     
     
    
@@ -78,8 +83,11 @@ public class FXMLVistaBitalino2Controller implements Initializable {
     
     @FXML
     private void record(ActionEvent event){
-        String macAddress = textMacAddress.getText(); //You should have the MAC ADDRESS in a sticker in the Bitalino
+        System.out.println("esta mierda ");
+        String macAddress = text.getText();//You should have the MAC ADDRESS in a sticker in the Bitalino
+        System.out.println("este es tu MacAddress:"+ macAddress);
         try {
+            Main.bitalino = new BITalino();
             // Code to find Devices
             Vector<RemoteDevice> devices = Main.bitalino.findDevices();
             System.out.println(devices);
@@ -118,6 +126,7 @@ public class FXMLVistaBitalino2Controller implements Initializable {
             //stop acquisition
             Main.bitalino.stop();
         } catch (BITalinoException ex) {
+            System.out.println("Hola soy bitalino y no funciono");
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Throwable ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
