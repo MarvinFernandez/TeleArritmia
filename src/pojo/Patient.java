@@ -6,6 +6,7 @@
 package pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -22,10 +23,12 @@ public class Patient implements Serializable {
     private String email;
     private Date dob;
     private GENDER sex; 
-    private int ECG[][]; 
-    private int EDA[][];
+    private ArrayList<Integer> ECG = new ArrayList();
+    private ArrayList<Integer> time = new ArrayList();
+    private ArrayList<Integer> EDA = new ArrayList();
+    
 
-    public Patient(String name, String surname, String id, String email, Date dob, GENDER sex, int[][] ECG, int[][] EDA) {
+    public Patient(String name, String surname, String id, String email, Date dob, GENDER sex, ArrayList<Integer> ECG,ArrayList<Integer> EDA) {
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -45,6 +48,7 @@ public class Patient implements Serializable {
         this.sex = null;
         this.ECG = null;
         this.EDA = null;
+        this.time = null;
     }
     
     
@@ -98,36 +102,42 @@ public class Patient implements Serializable {
         this.sex = sex;
     }
 
-    public int[][] getECG() {
-        return ECG;
-    }
-
-    public void setECG(int[][] ECG) {
-        this.ECG = ECG;
+    public ArrayList<Integer> getECG(){
+        return this.ECG;
     }
     
-    //Yo no se si esto vaya a funcionar
-    public void setECG2(int []ECG,int []time){
-        this.ECG[0] = ECG;
-        this.ECG[1] = time;
+    public void setECG(ArrayList<Integer> ecg){
+        this.ECG = ecg;
     }
     
-    //Esto puede que mejor
-    public void setECGonly(int i,int j, int EMG){
-        this.ECG[i][j] = EMG; 
-    }
-
-    public int[][] getEDA() {
-        return EDA;
+    public void addECG(int i){
+        this.ECG.add(i);
     }
     
-
-    public void setEDA(int[][] EDA) {
-        this.EDA = EDA;
+    public ArrayList<Integer> getEDA(){
+        return this.EDA;
     }
-    public void setEDA(int i, int j, int EDA){
-        this.ECG[i][j]=EDA;
+    
+    public void setEDA(ArrayList<Integer> eda){
+        this.EDA = eda;
     }
+    
+    public void addEDA(int i){
+        this.EDA.add(i);
+    }
+    
+    public ArrayList<Integer> getTime(){
+        return this.time;
+    }
+    
+    public void setTime(ArrayList<Integer> time){
+        this.time = time;
+    }
+    
+    public void addTime(int i){
+        this.time.add(i);
+    }
+    
 
     @Override
     public String toString() {
