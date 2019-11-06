@@ -5,9 +5,7 @@
  */
 package telearritmia;
 
-import BITalino.BITalino;
-import BITalino.BITalinoException;
-import BITalino.Frame;
+import BITalino.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,12 +39,9 @@ public class FXMLVistaBitalino2Controller implements Initializable {
     //private ProgressIndicator indicator;
     @FXML
     private TextField textMacAddress;
-    
     @FXML
     private Accordion steps;
     
-    @FXML
-    private TextField text;
     
     
    
@@ -83,64 +78,75 @@ public class FXMLVistaBitalino2Controller implements Initializable {
     
     @FXML
     private void record(ActionEvent event){
-        System.out.println("esta mierda ");
-        String macAddress = text.getText();//You should have the MAC ADDRESS in a sticker in the Bitalino
-        System.out.println("este es tu MacAddress:"+ macAddress);
-        try {
-            Main.bitalino = new BITalino();
-            // Code to find Devices
-            Vector<RemoteDevice> devices = Main.bitalino.findDevices();
-            System.out.println(devices);
+      
+            System.out.println("el thread va a empezar");
+            Blue blue = new Blue();
+            blue.start();
+            //blue.join(); esto no funciona
+            
+            /*BITalino bitalino = new BITalino();
+            System.out.println("entra al método");
+            int seconds = 0;
+            String macAddress = textMacAddress.getText();//You should have the MAC ADDRESS in a sticker in the Bitalino
+            System.out.println("este es tu MacAddress:"+ macAddress);
+            try {
+            
             //Sampling rate, should be 10, 100 or 1000
             int SamplingRate = 100;
-            Main.bitalino.open(macAddress, SamplingRate);
-            // Start acquisition on analog channels A2 and A3
-            // For example, If you want A1, A3 and A4 you should use {0,2,3}
+            bitalino.open(macAddress, SamplingRate);
+   
             int[] channelsToAcquire = {1, 2};
-            Main.bitalino.start(channelsToAcquire);
-            
+            bitalino.start(channelsToAcquire);
             Frame[] frame;
             
             for (int j = 0; j < 30; j++) {
-
-                //Each time read a block of 10 samples 
-                int block_size=100;
-                //frame should change into EMG matrix
-                frame = Main.bitalino.read(block_size);
-
-                System.out.println("size block: " + frame.length);
-
-                //Print the samples
-                for (int i = 0; i < frame.length; i++) {
-                    System.out.println((j * block_size + i) + " seq: " + frame[i].seq + " "
-                            + frame[i].analog[0] + " "
-                            + frame[i].analog[1] + " "
-                    //  + frame[i].analog[2] + " "
-                    //  + frame[i].analog[3] + " "
-                    //  + frame[i].analog[4] + " "
-                    //  + frame[i].analog[5]
-                    );
-
-                }
+            
+            //Each time read a block of 10 samples
+            int block_size=100;
+            
+            frame = bitalino.read(block_size);
+            
+            System.out.println("size block: " + frame.length);
+            seconds = j;
+            System.out.println("\ntime in seconds"+seconds);
+            
+            //Print the samples
+            for (int i = 0; i < frame.length; i++) {
+            
+            /*System.out.println((j * block_size + i) + " seq: " + frame[i].seq + " "
+            + frame[i].analog[0] + " "
+            + frame[i].analog[1] + " "
+            //  + frame[i].analog[2] + " "
+            //  + frame[i].analog[3] + " "
+            //  + frame[i].analog[4] + " "
+            //  + frame[i].analog[5]
+            );*/
+            /*           Main.patient.addTime(j*block_size+i);
+            Main.patient.addECG(frame[i].analog[0]);
+            Main.patient.addEDA(frame[i].analog[1]);
+            
+            }
             }
             //stop acquisition
-            Main.bitalino.stop();
-        } catch (BITalinoException ex) {
+            bitalino.stop();
+            } catch (BITalinoException ex) {
             System.out.println("Hola soy bitalino y no funciono");
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Throwable ex) {
+            } catch (Throwable ex) {
+            System.out.println("throwable error");
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+            } finally {
             try {
-                //close bluetooth connection
-                if (Main.bitalino != null) {
-                    Main.bitalino.close();
-                }
-            } catch (BITalinoException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            //close bluetooth connection
+            if (bitalino != null) {
+            bitalino.close();
             }
-        }
-    
+            } catch (BITalinoException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+       */
+         
     }
     
     
@@ -152,4 +158,4 @@ public class FXMLVistaBitalino2Controller implements Initializable {
         // TODO
     }    
     
-}
+}    
