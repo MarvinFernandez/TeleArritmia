@@ -59,7 +59,6 @@ public class FXMLVistaPatientController implements Initializable {
     @FXML
     private void startBitalinoVista(ActionEvent event) {
         try {
-            ((Node)(event.getSource())).getScene().getWindow().hide();
             Parent parent = FXMLLoader.load(getClass().getResource("FXMLVistaBitalino2.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(parent);
