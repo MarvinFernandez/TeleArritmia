@@ -46,9 +46,11 @@ public class FXMLVistaInitController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLVistaInitController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Problems with patient Vista");
+            System.out.println(ex);
         }
     }
     
+    /*veamos si se sube*/
     
     
     @Override

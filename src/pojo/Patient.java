@@ -5,13 +5,15 @@
  */
 package pojo;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  *
  * @author danielmarchan
  */
-public class Patient {
+public class Patient implements Serializable {
     
     public enum GENDER{male,female};
     
@@ -21,10 +23,12 @@ public class Patient {
     private String email;
     private Date dob;
     private GENDER sex; 
-    private int ECG[][]; 
-    private int EDA[][];
+    private ArrayList<Integer> ECG = new ArrayList();
+    private ArrayList<Integer> time = new ArrayList();
+    private ArrayList<Integer> EDA = new ArrayList();
+    
 
-    public Patient(String name, String surname, String id, String email, Date dob, GENDER sex, int[][] ECG, int[][] EDA) {
+    public Patient(String name, String surname, String id, String email, Date dob, GENDER sex, ArrayList<Integer> ECG,ArrayList<Integer> EDA) {
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -44,6 +48,7 @@ public class Patient {
         this.sex = null;
         this.ECG = null;
         this.EDA = null;
+        this.time = null;
     }
     
     
@@ -97,25 +102,46 @@ public class Patient {
         this.sex = sex;
     }
 
-    public int[][] getECG() {
-        return ECG;
+    public ArrayList<Integer> getECG(){
+        return this.ECG;
     }
-
-    public void setECG(int[][] ECG) {
-        this.ECG = ECG;
+    
+    public void setECG(ArrayList<Integer> ecg){
+        this.ECG = ecg;
     }
-
-    public int[][] getEDA() {
-        return EDA;
+    
+    public void addECG(int i){
+        this.ECG.add(i);
     }
-
-    public void setEDA(int[][] EDA) {
-        this.EDA = EDA;
+    
+    public ArrayList<Integer> getEDA(){
+        return this.EDA;
     }
+    
+    public void setEDA(ArrayList<Integer> eda){
+        this.EDA = eda;
+    }
+    
+    public void addEDA(int i){
+        this.EDA.add(i);
+    }
+    
+    public ArrayList<Integer> getTime(){
+        return this.time;
+    }
+    
+    public void setTime(ArrayList<Integer> time){
+        this.time = time;
+    }
+    
+    public void addTime(int i){
+        this.time.add(i);
+    }
+    
 
     @Override
     public String toString() {
-        return "Patient{\n" + "name=" + name + "\n surname=" + surname + 
+        return "Patient{\n" + " name=" + name + "\n surname=" + surname + 
                 "\n id=" + id + "\n email=" + email + "\n dob=" + dob.getDay()+
                 "/"+dob.getMonth()+"/"+dob.getYear() + "\n sex=" + sex + "\n}";
     }

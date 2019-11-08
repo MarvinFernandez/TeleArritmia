@@ -15,38 +15,38 @@ import java.util.Vector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.bluetooth.RemoteDevice;
 
 /**
- * FXML Controller class
- *
- * @author marvi
+
  */
-public class FXMLBitalinoController implements Initializable {
+public class FXMLBitalinoController_error implements Initializable {
     
-    public static Frame[] frame;
+    //public static Frame[] frame;
     
    
     //Vector<RemoteDevice> devices = Main.bitalino.findDevices();
-    String macAddress = null;
+    //String macAddress = null;
     //Sampling rate, should be 10, 100 or 1000
-    int SamplingRate = 100;
+    //int SamplingRate = 100;
     // selet apropiade channel
-    int[] channelsToAcquire = {1, 5};
+    //int[] channelsToAcquire = {1, 5};
     
     
     @FXML
     private TextField textMacAdress;        
     
     @FXML
-    private Label errorLable;
+    private Label errorLabel;
     
     @FXML 
     private Button recordButton;
+    
+    @FXML
+    private Button GuardarEnviarButton;
 
     
     
@@ -58,9 +58,10 @@ public class FXMLBitalinoController implements Initializable {
         Main.bitalino.open(macAddress , SamplingRate);
  
     }*/
-    
-    private void record(ActionEvent event) throws BITalinoException{
-        macAddress = macAddress=textMacAdress.getText();
+    /*
+    @FXML
+    private void record (ActionEvent event) throws BITalinoException{
+       /* macAddress = macAddress=textMacAdress.getText();
         if (macAddress == null){
         //introduce macAdress Error
              errorLable.setText("Introduce the Mac Adresse of Bitalino");
