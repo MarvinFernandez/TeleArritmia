@@ -14,6 +14,7 @@ import java.util.Date;
  * @author danielmarchan
  */
 public class Patient implements Serializable {
+   //private static final long serialVersionUID= 1232334;
     
     public enum GENDER{male,female};
     
